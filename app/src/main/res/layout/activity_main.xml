@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.josh.car_loan.MainActivity">
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Car Payment Calculator"
+        android:textSize="30sp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/inputLayoutCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleView"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Car Cost:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/inputCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="number"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/inputLayoutDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="fill_horizontal"
+        android:layout_below="@id/inputLayoutCost">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Down Payment:"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/inputDown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="number"
+            android:textSize="20sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/inputLayoutAPR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="fill_horizontal"
+        android:layout_below="@id/inputLayoutDown">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APR:"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/inputAPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:inputType="numberDecimal"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/inputGroupType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/inputLayoutAPR"
+        android:checkedButton="@id/radioLoan"
+        >
+        <RadioButton
+            android:id="@+id/radioLoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loan"
+            android:layout_marginRight="40dp"
+            />
+        <RadioButton
+            android:id="@+id/radioLease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lease"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/SeekStuff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/inputGroupType">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Length of loan (months):"
+            android:layout_marginRight="10dp" />
+        <TextView
+            android:id="@+id/monthNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="30"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="60"
+        android:progress="30"
+        android:layout_below="@id/SeekStuff"/>
+
+
+    <TextView
+        android:id="@+id/PaymentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monthly Payment:"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_below="@id/SeekBar"/>
+
+    <TextView
+        android:id="@+id/OutputView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PaymentView"
+        android:gravity="center"
+        android:imeOptions="flagNoExtractUi"
+        android:text="*******"
+        android:textSize="30sp" />
+
+</RelativeLayout>
