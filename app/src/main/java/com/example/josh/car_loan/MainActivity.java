@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView output;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         length = findViewById(R.id.SeekBar);
         monthNum = findViewById(R.id.monthNum);
         output = findViewById(R.id.OutputView);
+
         length.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
@@ -114,21 +116,28 @@ public class MainActivity extends AppCompatActivity {
         String input1 = inputCost.getText().toString();
         String input2 = inputDown.getText().toString();
         String input3 = inputAPR.getText().toString();
-        double cost = Double.parseDouble(input1);
-        double down = Double.parseDouble(input2);
-        double APR = Double.parseDouble(input3);
+        double cost;
+        double down;
+        double APR;
         double months = length.getProgress();
         double total;
-        if(Loan.isChecked()){
-            double TAPR = APR /100;
-            double MPR = TAPR / 12;
-            double Tcost = cost - down;
-            total = (MPR)*((Tcost)/(1-pow(1+(MPR),-months)));
-        }else {
-            double TAPR = APR /100;
-            double MPR = TAPR / 12;
-            double Tcost = (cost/3) - down;
-            total = (MPR) * ((Tcost) / (1 - pow(1 + (MPR), -36)));
+        if(input1.isEmpty() == false && input2.isEmpty() == false && input3.isEmpty() == false) {
+            cost = Double.parseDouble(input1);
+            down = Double.parseDouble(input2);
+            APR = Double.parseDouble(input3);
+            if (Loan.isChecked()) {
+                double TAPR = APR / 100;
+                double MPR = TAPR / 12;
+                double Tcost = cost - down;
+                total = (MPR) * ((Tcost) / (1 - pow(1 + (MPR), -months)));
+            } else {
+                double TAPR = APR / 100;
+                double MPR = TAPR / 12;
+                double Tcost = (cost / 3) - down;
+                total = (MPR) * ((Tcost) / (1 - pow(1 + (MPR), -36)));
+            }
+        }else{
+            total = 0;
         }
         output.setText(String.format("%.2f",total));
     }
